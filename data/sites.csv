@@ -1,0 +1,41 @@
+site_id,institution_name,city,country,region,institution_type,has_emr,gcp_trained,has_feasibility_survey
+SITE_001,Chennai Institute of Thoracic Medicine,Chennai,India,Asia Pacific,Academic,TRUE,TRUE,TRUE
+SITE_002,Bengaluru Advanced Cancer Centre,Bengaluru,India,Asia Pacific,Academic,TRUE,TRUE,TRUE
+SITE_003,Osaka Municipal Respiratory Hospital,Osaka,Japan,Asia Pacific,Academic,TRUE,TRUE,TRUE
+SITE_004,Hyderabad Chest and Allergy Institute,Hyderabad,India,Asia Pacific,Academic,TRUE,TRUE,TRUE
+SITE_005,Krakow Regional Pulmonology Centre,Krakow,Poland,Europe,Academic,TRUE,TRUE,TRUE
+SITE_006,Hospital Cardiologico de Barcelona,Barcelona,Spain,Europe,Academic,TRUE,TRUE,TRUE
+SITE_007,Pune Cardiac Sciences Institute,Pune,India,Asia Pacific,Academic,TRUE,TRUE,TRUE
+SITE_008,Instituto de Oncologia de Sao Paulo,Sao Paulo,Brazil,Latin America,Academic,TRUE,TRUE,TRUE
+SITE_009,New Delhi Institute of Respiratory Health,New Delhi,India,Asia Pacific,Academic,TRUE,TRUE,TRUE
+SITE_010,Toronto Metropolitan Cancer Institute,Toronto,Canada,North America,Academic,TRUE,TRUE,TRUE
+SITE_011,Mumbai Institute of Oncology,Mumbai,India,Asia Pacific,Academic,TRUE,TRUE,FALSE
+SITE_012,Kolkata Respiratory Research Centre,Kolkata,India,Asia Pacific,Academic,TRUE,TRUE,FALSE
+SITE_013,Ahmedabad Cardiac Institute,Ahmedabad,India,Asia Pacific,Private,TRUE,TRUE,FALSE
+SITE_014,Kochi Advanced Medical Centre,Kochi,India,Asia Pacific,Private,TRUE,TRUE,FALSE
+SITE_015,Jaipur Thoracic Hospital,Jaipur,India,Asia Pacific,Academic,TRUE,TRUE,FALSE
+SITE_016,Tokyo Central Clinical Institute,Tokyo,Japan,Asia Pacific,Academic,TRUE,TRUE,FALSE
+SITE_017,Yokohama Cancer Centre,Yokohama,Japan,Asia Pacific,Academic,TRUE,FALSE,FALSE
+SITE_018,Seoul National Respiratory Centre,Seoul,South Korea,Asia Pacific,Academic,FALSE,TRUE,FALSE
+SITE_019,Singapore General Clinical Trials Unit,Singapore,Singapore,Asia Pacific,Academic,FALSE,TRUE,FALSE
+SITE_020,Sydney Chest and Heart Institute,Sydney,Australia,Asia Pacific,Academic,FALSE,FALSE,FALSE
+SITE_021,Melbourne Oncology Partners,Melbourne,Australia,Asia Pacific,Private,TRUE,TRUE,FALSE
+SITE_022,Madrid Instituto Cardiovascular,Madrid,Spain,Europe,Academic,FALSE,TRUE,FALSE
+SITE_023,Valencia Clinical Research Unit,Valencia,Spain,Europe,Private,FALSE,TRUE,FALSE
+SITE_024,Warsaw Institute of Pulmonology,Warsaw,Poland,Europe,Academic,FALSE,TRUE,FALSE
+SITE_025,Gdansk Regional Medical Centre,Gdansk,Poland,Europe,Private,FALSE,TRUE,FALSE
+SITE_026,Berlin Herzzentrum,Berlin,Germany,Europe,Academic,FALSE,TRUE,FALSE
+SITE_027,Munich Thoracic Clinic,Munich,Germany,Europe,Private,FALSE,TRUE,FALSE
+SITE_028,Lyon Centre Hospitalier,Lyon,France,Europe,Academic,TRUE,TRUE,FALSE
+SITE_029,Paris Institut du Thorax,Paris,France,Europe,Academic,TRUE,TRUE,FALSE
+SITE_030,Milan Centro Cardiologico,Milan,Italy,Europe,Academic,FALSE,TRUE,FALSE
+SITE_031,Rome Clinica Oncologica,Rome,Italy,Europe,Private,TRUE,FALSE,FALSE
+SITE_032,Manchester Royal Research Unit,Manchester,United Kingdom,Europe,Academic,TRUE,FALSE,FALSE
+SITE_033,Leeds Cardiovascular Institute,Leeds,United Kingdom,Europe,Academic,TRUE,TRUE,FALSE
+SITE_034,Toronto Western Chest Clinic,Toronto,Canada,North America,Private,TRUE,FALSE,FALSE
+SITE_035,Montreal Institut de Cardiologie,Montreal,Canada,North America,Academic,TRUE,TRUE,FALSE
+SITE_036,Boston Metropolitan Trials Centre,Boston,United States,North America,Academic,TRUE,TRUE,FALSE
+SITE_037,Houston Advanced Oncology Group,Houston,United States,North America,Private,TRUE,TRUE,FALSE
+SITE_038,Chicago Respiratory Institute,Chicago,United States,North America,Academic,TRUE,TRUE,FALSE
+SITE_039,Rio de Janeiro Centro Oncologico,Rio de Janeiro,Brazil,Latin America,Private,TRUE,TRUE,FALSE
+SITE_040,Buenos Aires Instituto Cardiaco,Buenos Aires,Argentina,Latin America,Academic,TRUE,TRUE,FALSE

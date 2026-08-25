@@ -1,0 +1,11 @@
+document_id,site_id,study_code,layout,country,city,institution,items_in_scope,items_can,items_cannot,patients_seen_per_year,planned_screened,planned_enrolled,startup_weeks,competing_studies
+survey_01_site_001_d0000c00010,SITE_001,D0000C00010,long,India,Chennai,Chennai Institute of Thoracic Medicine,15,15,0,28,18,11,8,1
+survey_02_site_002_d0000c00010,SITE_002,D0000C00010,long,India,Bengaluru,Bengaluru Advanced Cancer Centre,13,11,2,22,14,8,6,2
+survey_03_site_003_d0000c00010,SITE_003,D0000C00010,long,Japan,Osaka,Osaka Municipal Respiratory Hospital,15,14,1,16,10,6,10,2
+survey_04_site_004_d0000c00020,SITE_004,D0000C00020,long,India,Hyderabad,Hyderabad Chest and Allergy Institute,13,12,1,40,26,17,7,1
+survey_05_site_005_d0000c00020,SITE_005,D0000C00020,long,Poland,Krakow,Krakow Regional Pulmonology Centre,12,9,3,31,20,13,9,3
+survey_06_site_006_d0000c00030,SITE_006,D0000C00030,long,Spain,Barcelona,Hospital Cardiologico de Barcelona,13,12,1,25,15,9,12,2
+survey_07_site_007_d0000c00030,SITE_007,D0000C00030,long,India,Pune,Pune Cardiac Sciences Institute,12,9,3,33,21,14,8,1
+survey_08_site_008_d0000c00040,SITE_008,D0000C00040,checkbox,Brazil,Sao Paulo,Instituto de Oncologia de Sao Paulo,10,8,2,14,9,5,11,3
+survey_09_site_009_d0000c00050,SITE_009,D0000C00050,checkbox,India,New Delhi,New Delhi Institute of Respiratory Health,9,8,1,45,30,20,6,2
+survey_10_site_010_d0000c00060,SITE_010,D0000C00060,checkbox,Canada,Toronto,Toronto Metropolitan Cancer Institute,13,11,2,19,12,7,13,4

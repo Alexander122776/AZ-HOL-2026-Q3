@@ -1,0 +1,27 @@
+# Dependencies for the container runtime (Snowpark Container Services).
+#
+# The container runtime resolves these from PyPI, not from Snowflake's Anaconda
+# channel, so the Streamlit object must be created with
+# EXTERNAL_ACCESS_INTEGRATIONS = (AZ_HOL_PYPI_ACCESS) or the app fails to start
+# with a DNS error. The warehouse runtime ignores this file and reads
+# environment.yml instead, and needs no integration.
+#
+# Versions are left open so the resolver picks a compatible set.
+#
+# pypdfium2 renders the survey PDFs to images server side. It is a self contained
+# wheel with no system packages behind it, unlike pdf2image which needs poppler.
+# This replaces st.pdf, which cannot work here: it renders in the browser, and the
+# Streamlit in Snowflake Content Security Policy blocks the iframe and worker
+# resources a browser PDF viewer is built from, so it never leaves its spinner.
+[project]
+name = "site-feasibility"
+version = "1.0.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "streamlit>=1.49",
+    "pypdfium2>=4.30",
+    "pandas>=2.0",
+    "altair>=5.0",
+    "snowflake-snowpark-python>=1.20",
+    "requests>=2.31",
+]

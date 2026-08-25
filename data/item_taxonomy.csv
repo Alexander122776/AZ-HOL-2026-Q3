@@ -1,0 +1,41 @@
+canonical_name,category,synonyms
+12-Lead ECG,PROCEDURE,12 Lead ECG|12-lead ECG|ECG|Electrocardiogram|Electrocardiogram (ECG)
+Echocardiogram,PROCEDURE,ECHO|Echo|Echocardiogram (ECHO)|Cardiac ultrasound
+Cardiac MRI,PROCEDURE,Cardiac Magnetic Resonance|CMR|Cardiac Magnetic Resonance Imaging|Cardiac MRI scan
+Brain MRI,PROCEDURE,MRI Brain|Brain Magnetic Resonance Imaging|Head MRI
+CT Scan,PROCEDURE,CT scan|Computed Tomography|CAT scan|CT
+X-Ray,PROCEDURE,Xray|X Ray|Radiography|Plain film radiography
+FDG-PET,PROCEDURE,FDG PET|PET-CT|FDG-PET scan|Fluorodeoxyglucose PET
+PET,PROCEDURE,PET scan|Positron Emission Tomography
+Bone Scan,PROCEDURE,Bone scintigraphy|Bone scan (bone scintigraphy)|Skeletal scintigraphy
+MUGA,PROCEDURE,MUGA scan|Multigated acquisition scan|Radionuclide ventriculography
+Ultrasound,PROCEDURE,US|Sonography|Diagnostic ultrasound
+Spirometry,PROCEDURE,Lung function test|Pulmonary function test|PFT
+Cardiac PYP Scan,PROCEDURE,Cardiac PYP|Pyrophosphate Scan|Cardiac PYP (Pyrophosphate) Scan|PYP scan
+Endomyocardial Biopsy,PROCEDURE,Heart biopsy|Cardiac biopsy|Myocardial biopsy
+Bone Marrow Biopsy,PROCEDURE,Marrow biopsy|Bone marrow aspirate
+Tumour Biopsy,PROCEDURE,Tissue biopsy|Core biopsy|Tumor biopsy
+Visual Acuity Test,PROCEDURE,Visual acuity testing|Visual acuity test|Eye chart test
+Slit Lamp Examination,PROCEDURE,Slit lamp exam|Slit-lamp examination|Biomicroscopy
+Fundoscopy,PROCEDURE,Ophthalmoscopy|Fundus examination|Dilated fundoscopy
+Intraocular Pressure Measurement,PROCEDURE,Intraocular pressure|IOP measurement|Tonometry|Intracocular pressure measurement
+Fluorescein Corneal Staining,PROCEDURE,Fluorescein staining|Fluorescein of the cornea|Corneal staining
+Genetic Testing,PROCEDURE,Blood Tests/Genetic Testing|Genotyping|Germline testing
+Local EGFR Mutation Testing,PROCEDURE,EGFR testing|EGFR mutation test|Local EGFR testing
+NT-proBNP Testing,PROCEDURE,NT proBNP|NT-proBNP blood testing|BNP testing
+Plasma Sampling,PROCEDURE,Plasma sample collection|Plasma collection
+Serum Sampling (Frozen),PROCEDURE,Serum sampling|Frozen serum|Serum sample (frozen)
+Whole Blood Sampling (Ambient),PROCEDURE,Whole blood sampling|Ambient whole blood|Whole blood collection
+Urinalysis,PROCEDURE,Urine analysis|Urine test|Urine sample analysis
+Centrifuge,EQUIPMENT,Centrifuge capable of 2000 x g|Laboratory centrifuge|Refrigerated centrifuge
+-20C Freezer,EQUIPMENT,-20 Freezer|-20°C Freezer|Minus 20 freezer|-20 degree freezer
+-70C Freezer,EQUIPMENT,-70 Freezer|-70°C Freezer|Minus 70 freezer|-80C Freezer|Ultra-low freezer
+Refrigerated Sample Storage,EQUIPMENT,Fridge|2-8C storage|Refrigerator|Cold storage
+On-site Pharmacy,EQUIPMENT,Onsite pharmacy|Site pharmacy|Internal pharmacy
+Off-site Pharmacy,EQUIPMENT,Offsite pharmacy|External pharmacy|Third party pharmacy
+Drug/Device Storage,EQUIPMENT,IMP storage|Drug storage|Investigational product storage
+Temperature-Monitored Storage,EQUIPMENT,Temperature monitoring|Monitored storage|Continuous temperature logging
+Sample Shipping,EQUIPMENT,Sample despatch|Courier shipping|Specimen shipping
+Document Archive,EQUIPMENT,Archive|Records archive|Long-term document storage
+eCOA Device,EQUIPMENT,eCOA|Electronic clinical outcome assessment device|ePRO device
+Electronic Data Capture,EQUIPMENT,EDC|Electronic data capture system|eCRF

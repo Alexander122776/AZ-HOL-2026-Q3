@@ -1,0 +1,10 @@
+name: sf_env
+channels:
+  - snowflake
+dependencies:
+  - pandas
+  - matplotlib
+  # Renders the survey pages on the Document review tab. Only read by the
+  # warehouse runtime - the container runtime takes its dependencies from
+  # pyproject.toml instead.
+  - pypdfium2

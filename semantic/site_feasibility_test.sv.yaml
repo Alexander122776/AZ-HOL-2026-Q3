@@ -1,0 +1,384 @@
+name: SITE_FEASIBILITY_TEST
+description: "A throwaway copy of the site feasibility model, for exploring the Semantic View Editor and the Playground. The agent uses SITE_FEASIBILITY, not this one. Safe to drop."
+tables:
+  - name: CAPABILITY
+    synonyms:
+      - capabilities
+      - equipment
+      - procedures
+      - site capability
+    description: One row per capability item extracted from a feasibility survey PDF.
+    base_table:
+      database: AZ_FEASIBILITY_DEMO
+      schema: ANALYTICS
+      table: FACT_CAPABILITY
+    primary_key:
+      columns:
+        - DOCUMENT_ID
+        - ITEM
+    dimensions:
+      - name: CAPABILITY_SOURCE
+        synonyms:
+          - evidence source
+          - how was this determined
+        description: "EXTRACTED means the answer was read directly off the survey, either as a ticked box or as a listed item. DERIVED_ABSENT means the study requires this item and the survey did not list it, so it is recorded as unavailable by absence."
+        expr: capability_source
+        data_type: VARCHAR(14)
+        access_modifier: public_access
+        is_enum: true
+        sample_values:
+          - EXTRACTED
+          - DERIVED_ABSENT
+      - name: CAPABILITY_STATUS
+        description: CAN means the site can perform or provide this item. CANNOT means it cannot.
+        expr: capability
+        data_type: VARCHAR(6)
+        access_modifier: public_access
+        is_enum: true
+        sample_values:
+          - CAN
+          - CANNOT
+      - name: EXTRACTED_AS
+        description: "The item name exactly as written on the survey, before normalisation."
+        expr: extracted_as
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+      - name: ITEM
+        synonyms:
+          - procedure
+          - equipment
+          - capability
+          - test
+          - assessment
+        description: Canonical name of the procedure or equipment item.
+        expr: item
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+      - name: ITEM_CATEGORY
+        description: Whether the item is a procedure or a piece of equipment.
+        expr: item_category
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+        is_enum: true
+        sample_values:
+          - PROCEDURE
+          - EQUIPMENT
+      - name: NEEDS_REVIEW
+        description: TRUE when extraction confidence for this item was below 0.70 and a human should verify it.
+        expr: needs_review
+        data_type: BOOLEAN
+        access_modifier: public_access
+      - name: WAS_NORMALISED
+        description: TRUE when the name written on the survey differed from the canonical name and was resolved by similarity matching.
+        expr: was_normalised
+        data_type: BOOLEAN
+        access_modifier: public_access
+    facts:
+      - name: F_CONFIDENCE
+        expr: confidence
+        data_type: FLOAT
+        access_modifier: public_access
+      - name: F_IS_AVAILABLE
+        expr: "IFF(capability = 'CAN', 1, 0)"
+        data_type: "NUMBER(1,0)"
+        access_modifier: public_access
+    metrics:
+      - name: M_ITEMS_CAN
+        description: Number of items the site can provide.
+        expr: SUM(capability.f_is_available)
+        access_modifier: public_access
+      - name: M_ITEM_COUNT
+        description: Number of extracted capability items.
+        expr: COUNT(*)
+        access_modifier: public_access
+      - name: M_MEAN_CONFIDENCE
+        synonyms:
+          - extraction confidence
+          - average confidence
+        description: "Mean AI_EXTRACT confidence score, between 0 and 1."
+        expr: AVG(capability.f_confidence)
+        access_modifier: public_access
+  - name: SITES
+    synonyms:
+      - site
+      - investigator site
+      - hospital
+      - institution
+    description: Investigator sites.
+    base_table:
+      database: AZ_FEASIBILITY_DEMO
+      schema: ANALYTICS
+      table: DIM_SITE
+    primary_key:
+      columns:
+        - SITE_ID
+    dimensions:
+      - name: CITY
+        description: City where the site is located.
+        expr: city
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+      - name: COUNTRY
+        synonyms:
+          - nation
+          - site country
+        description: Country where the site is located.
+        expr: country
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+      - name: GCP_TRAINED
+        description: TRUE if site staff hold current ICH-GCP training.
+        expr: gcp_trained
+        data_type: BOOLEAN
+        access_modifier: public_access
+      - name: HAS_EMR
+        description: TRUE if the site uses electronic medical records.
+        expr: has_emr
+        data_type: BOOLEAN
+        access_modifier: public_access
+      - name: HAS_SURVEY
+        description: "TRUE if a feasibility survey has been received and processed for this site. FALSE means the site has not been assessed yet, which is different from the site lacking capability."
+        expr: has_feasibility_survey
+        data_type: BOOLEAN
+        access_modifier: public_access
+      - name: INSTITUTION
+        synonyms:
+          - hospital name
+          - institution name
+          - clinic
+        description: Name of the investigator institution.
+        expr: institution_name
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+      - name: INSTITUTION_TYPE
+        description: Academic or private institution.
+        expr: institution_type
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+        is_enum: true
+        sample_values:
+          - Academic
+          - Private
+      - name: REGION
+        synonyms:
+          - geography
+          - territory
+        description: Commercial region.
+        expr: region
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+        is_enum: true
+        sample_values:
+          - Asia Pacific
+          - Europe
+          - North America
+          - Latin America
+      - name: SITE
+        synonyms:
+          - site id
+          - site reference
+          - site code
+        description: Site identifier.
+        expr: site_id
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+  - name: SITE_STUDY
+    synonyms:
+      - site study pair
+      - site readiness
+      - feasibility assessment
+    description: "One row per site and study. Capability coverage, planned enrolment and startup time."
+    base_table:
+      database: AZ_FEASIBILITY_DEMO
+      schema: ANALYTICS
+      table: FACT_SITE_STUDY
+    primary_key:
+      columns:
+        - SITE_ID
+        - STUDY_CODE
+    facts:
+      - name: F_COMPETING
+        expr: competing_studies
+        data_type: "NUMBER(38,0)"
+        access_modifier: public_access
+      - name: F_ITEMS_AVAILABLE
+        expr: items_available
+        data_type: "NUMBER(13,0)"
+        access_modifier: public_access
+      - name: F_ITEMS_MISSING
+        expr: items_missing
+        data_type: "NUMBER(13,0)"
+        access_modifier: public_access
+      - name: F_ITEMS_REQUIRED
+        expr: items_required
+        data_type: "NUMBER(18,0)"
+        access_modifier: public_access
+      - name: F_PATIENTS_SEEN
+        expr: patients_seen_per_year
+        data_type: "NUMBER(38,0)"
+        access_modifier: public_access
+      - name: F_PLANNED_ENROLLED
+        expr: planned_enrolled
+        data_type: "NUMBER(38,0)"
+        access_modifier: public_access
+      - name: F_PLANNED_SCREENED
+        expr: planned_screened
+        data_type: "NUMBER(38,0)"
+        access_modifier: public_access
+      - name: F_STARTUP_WEEKS
+        expr: startup_weeks
+        data_type: "NUMBER(38,0)"
+        access_modifier: public_access
+    metrics:
+      - name: M_AVG_COMPETING_STUDIES
+        description: Average number of competing studies per site.
+        expr: AVG(site_study.f_competing)
+        access_modifier: public_access
+      - name: M_AVG_STARTUP_WEEKS
+        synonyms:
+          - average startup time
+          - time to first patient
+        description: Average weeks from final protocol to first patient in.
+        expr: AVG(site_study.f_startup_weeks)
+        access_modifier: public_access
+      - name: M_CAPABILITY_COVERAGE
+        synonyms:
+          - coverage
+          - readiness
+          - capability percentage
+        description: "Share of the study required items that the site can provide. Recomputed as available divided by required at the grain queried, never averaged."
+        expr: "DIV0(SUM(site_study.f_items_available), SUM(site_study.f_items_required))"
+        access_modifier: public_access
+      - name: M_ITEMS_MISSING
+        synonyms:
+          - capability gaps
+          - missing equipment
+          - gaps
+        description: Total number of required items the site cannot provide.
+        expr: SUM(site_study.f_items_missing)
+        access_modifier: public_access
+      - name: M_PATIENTS_SEEN
+        description: Total patients seen per year across sites.
+        expr: SUM(site_study.f_patients_seen)
+        access_modifier: public_access
+      - name: M_PLANNED_ENROLLED
+        synonyms:
+          - planned enrolment
+          - enrolment target
+          - patients we plan to enrol
+        description: Total patients planned to be enrolled.
+        expr: SUM(site_study.f_planned_enrolled)
+        access_modifier: public_access
+      - name: M_PLANNED_SCREENED
+        description: Total patients planned to be screened.
+        expr: SUM(site_study.f_planned_screened)
+        access_modifier: public_access
+      - name: M_SITE_STUDY_COUNT
+        synonyms:
+          - number of assessments
+          - how many site study pairs
+        description: Number of site and study combinations.
+        expr: COUNT(*)
+        access_modifier: public_access
+  - name: STUDIES
+    synonyms:
+      - study
+      - trial
+      - protocol
+      - clinical trial
+    description: Clinical studies requiring site feasibility assessment.
+    base_table:
+      database: AZ_FEASIBILITY_DEMO
+      schema: ANALYTICS
+      table: DIM_STUDY
+    primary_key:
+      columns:
+        - STUDY_CODE
+    dimensions:
+      - name: DRUG
+        synonyms:
+          - drug
+          - compound name
+          - molecule
+        description: Investigational drug name.
+        expr: drug_name
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+      - name: INDICATION
+        description: Full indication under study.
+        expr: indication
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+      - name: PHASE
+        description: Clinical trial phase.
+        expr: phase
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+        is_enum: true
+        sample_values:
+          - I
+          - II
+          - III
+      - name: STUDY
+        synonyms:
+          - study code
+          - protocol number
+          - trial code
+        description: Study or protocol code.
+        expr: study_code
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+      - name: STUDY_STATUS
+        description: Current recruitment status of the study.
+        expr: status
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+        is_enum: true
+        sample_values:
+          - Recruiting
+          - Active
+      - name: THERAPY_AREA
+        synonyms:
+          - indication area
+          - disease area
+          - TA
+        description: Therapy area of the study.
+        expr: therapy_area
+        data_type: VARCHAR(16777216)
+        access_modifier: public_access
+        is_enum: true
+        sample_values:
+          - NSCLC
+          - Asthma
+          - ATTR-CM
+          - Breast Cancer
+          - COPD
+          - Solid Tumours
+relationships:
+  - name: CAPABILITY_TO_SITES
+    left_table: CAPABILITY
+    right_table: SITES
+    relationship_columns:
+      - left_column: SITE_ID
+        right_column: SITE_ID
+  - name: CAPABILITY_TO_STUDIES
+    left_table: CAPABILITY
+    right_table: STUDIES
+    relationship_columns:
+      - left_column: STUDY_CODE
+        right_column: STUDY_CODE
+  - name: SITE_STUDY_TO_SITES
+    left_table: SITE_STUDY
+    right_table: SITES
+    relationship_columns:
+      - left_column: SITE_ID
+        right_column: SITE_ID
+  - name: SITE_STUDY_TO_STUDIES
+    left_table: SITE_STUDY
+    right_table: STUDIES
+    relationship_columns:
+      - left_column: STUDY_CODE
+        right_column: STUDY_CODE
+module_custom_instructions:
+  sql_generation: "Capability coverage is always a ratio computed as SUM(items_available) divided by SUM(items_required) at the grain being queried. Never average a coverage value and never sum it. Only sites where has_survey is TRUE have capability data; a site with items_required of zero has not been assessed, which is different from a site that lacks capability. When a user asks which sites can perform a specific procedure or provide specific equipment, filter capability_status to CAN and filter item to that name. When a user asks about gaps or what is missing, filter capability_status to CANNOT. A CANNOT row may have capability_source of DERIVED_ABSENT, meaning the study requires the item and the survey did not list it; treat that as a genuine gap. Prefer returning site, institution, city and country together so a site is identifiable."
+  question_categorization: "This model covers clinical trial site feasibility only: site capabilities, planned enrolment, startup timelines and study metadata. If a question asks about individual patients, patient level data, adverse events or efficacy results, explain that this model contains no patient data and cannot answer it. If a question asks which site is best without saying what matters, ask whether to rank by capability coverage, by planned enrolment, or by startup time."

@@ -1,0 +1,7 @@
+study_code,compound,drug_name,therapy_area,indication,phase,status,target_enrolment,required_items
+D0000C00010,AZD-1001,Osimertinib,NSCLC,"Stage III unresectable EGFR-mutated NSCLC",II,Recruiting,240,12-Lead ECG|CT Scan|Brain MRI|FDG-PET|Local EGFR Mutation Testing|Plasma Sampling|Centrifuge|-20C Freezer|Sample Shipping|Drug/Device Storage
+D0000C00020,AZD-3003,Astrizumab,Asthma,"Severe uncontrolled asthma",III,Recruiting,600,Spirometry|12-Lead ECG|Whole Blood Sampling (Ambient)|Serum Sampling (Frozen)|Centrifuge|-70C Freezer|eCOA Device|Electronic Data Capture|Sample Shipping
+D0000C00030,AZD-6006,Cardixalin,ATTR-CM,"Transthyretin amyloid cardiomyopathy",III,Recruiting,420,12-Lead ECG|Echocardiogram|Cardiac MRI|Cardiac PYP Scan|NT-proBNP Testing|Genetic Testing|Plasma Sampling|Centrifuge|-70C Freezer
+D0000C00040,AZD-5005,Breastinel,Breast Cancer,"HER2-low metastatic breast cancer",II,Recruiting,180,CT Scan|Visual Acuity Test|Slit Lamp Examination|Fluorescein Corneal Staining|Intraocular Pressure Measurement|Tumour Biopsy|Serum Sampling (Frozen)|Centrifuge
+D0000C00050,AZD-7007,Respirex,COPD,"Moderate to severe COPD",III,Active,750,Spirometry|12-Lead ECG|X-Ray|Whole Blood Sampling (Ambient)|Centrifuge|Refrigerated Sample Storage|eCOA Device
+D0000C00060,AZD-8008,Soliduzinib,Solid Tumours,"Advanced solid tumours",I,Recruiting,90,CT Scan|Echocardiogram|Tumour Biopsy|Bone Marrow Biopsy|Plasma Sampling|Serum Sampling (Frozen)|Centrifuge|-70C Freezer|Temperature-Monitored Storage
